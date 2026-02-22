@@ -2,6 +2,10 @@
 build/
 .vscode/*
 
+# .msh files can be generated using provided script
+*.msh
+material_coordinates.txt
+
 # Prerequisites
 *.d
 
@@ -43,3 +47,5 @@ build/
 
 # debug information files
 *.dwo
+.DS_Store
+.DS_Store

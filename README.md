@@ -1,12 +1,6 @@
-### Organizing the source code
-Please place all your sources into the `src` folder.
+### Building
 
-Binary files must not be uploaded to the repository (including executables).
-
-Mesh files should not be uploaded to the repository. If applicable, upload `gmsh` scripts with suitable instructions to generate the meshes (and ideally a Makefile that runs those instructions). If not applicable, consider uploading the meshes to a different file sharing service, and providing a download link as part of the building and running instructions.
-
-### Compiling
-To build the executable, make sure you have loaded the needed modules with
+To build the non-linear elasticity solver and examples, make sure you have loaded the needed modules with
 ```bash
 $ module load gcc-glibc dealii
 ```
@@ -17,7 +11,18 @@ $ cd build
 $ cmake ..
 $ make
 ```
-The executable will be created into `build`, and can be executed through
+The examples' executables will be created in subdirectories of `build/src/examples/`, and can be executed through
 ```bash
 $ ./executable-name
 ```
+
+### Heart mesh
+
+The heart examples require `heart_mesh.msh` and `material_coordinates.txt` to be present
+in the current working directory during runtime. 
+These files can be generated in the `heart-mesh/` directory by creating and activating
+a Python virtual environment, ensuring `gmsh` pip package is installed, and then running the
+`heart-gen.py` script. 
+If the files `heart_mesh.msh` and `material_coordinates.txt` are present in the `heart-mesh/`
+directory during CMake configuration, they will be automatically copied to the 
+`build/src/examples/heart/` directory. Otherwise, CMake will print a warning.
